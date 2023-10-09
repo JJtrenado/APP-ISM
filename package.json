@@ -1,0 +1,52 @@
+{
+  "name": "outfitme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "web": "turbo web",
+    "android": "turbo antroid",
+    "buildapk": "turbo buildapk",
+    "start": "turbo start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "@types/multer": "^1.4.7",
+    "babel-eslint": "^10.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-config-standard-react": "^13.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
+    "jsx": "^0.9.89",
+    "turbo": "^1.10.7"
+  },
+  "eslintConfig": {
+    "extends": [
+      "standard",
+      "standard-jsx",
+      "standard-react"
+    ],
+    "parser": "babel-eslint"
+  },
+  "dependencies": {
+    "@nestjs/mongoose": "^10.0.0",
+    "@react-native-picker/picker": "2.4.8",
+    "expo-camera": "~13.2.1",
+    "expo-image-picker": "~14.1.1",
+    "expo-media-library": "~15.2.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.3.4",
+    "react-native-gesture-handler": "~2.9.0",
+    "react-native-safe-area-context": "4.5.0",
+    "react-native-screens": "~3.20.0",
+    "typescript": "^4.9.4"
+  }
+}
