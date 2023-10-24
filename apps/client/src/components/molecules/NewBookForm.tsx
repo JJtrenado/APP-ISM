@@ -67,34 +67,6 @@ const NewBookForm = ({ barCode, formDataPhotoUri }) => {
         control={control}
         secureTextEntry={undefined}
       />
-
-      <CustomInput
-        name="description"
-        placeholder="Descripción"
-        control={control}
-        secureTextEntry={undefined}
-      />
-
-      <CustomInput
-        name="date"
-        placeholder="Fecha"
-        control={control}
-        secureTextEntry={undefined}
-      />
-
-      <CustomInput
-        name="genre"
-        placeholder="Género"
-        control={control}
-        secureTextEntry={undefined}
-      />
-
-      <SwitchInput
-        name="availability"
-        placeholder="Libro disponible"
-        control={control}
-        defaultValue={true}      
-      />
       
       <StyledButton onPress={handleSubmit(onSubmit)}>Crear Libro</StyledButton>
     </View>

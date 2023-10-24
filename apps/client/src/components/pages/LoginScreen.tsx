@@ -5,7 +5,7 @@ import StyledButton from '../atoms/StyledButton';
 import { useForm } from 'react-hook-form';
 import CustomInput from '../atoms/textInput';
 import { useNavigation } from '@react-navigation/native';
-import { getJwt } from '../../modules/Login/Infrastructure/getJwt';
+import { login } from '../../modules/Login/Infrastructure/login';
 
 export default function LoginScreen() {
     const navigation = useNavigation();
@@ -16,7 +16,7 @@ export default function LoginScreen() {
       Object.keys(data).map((key: string) => {
         formData.append(key, data[key]);
       });
-      const user = await getJwt(formData);
+      const user = await login(formData);
       await saveLocalUser(user);
       navigation.navigate('Home' as never);
     };
@@ -29,7 +29,7 @@ export default function LoginScreen() {
           name="email"
           placeholder="Correo electrónico"
           control={control}
-          secureTextEntry={undefined}
+          secureTextEntry={false}
         />
   
         <CustomInput

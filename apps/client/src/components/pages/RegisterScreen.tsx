@@ -5,7 +5,7 @@ import StyledButton from '../atoms/StyledButton';
 import { useForm } from 'react-hook-form';
 import CustomInput from '../atoms/textInput';
 import { useNavigation } from '@react-navigation/native';
-import { getJwt } from '../../modules/Login/Infrastructure/getJwt';
+
 import Header from "../molecules/Header";
 import { registerUser } from "../../modules/Login/Infrastructure/registerUser";
 
@@ -28,7 +28,7 @@ export default function RegisterScreen() {
     Object.keys(data).map((key: string) => {
       formData.append(key, data[key]);
     });
-    await registerUser(user.jwt.jwt, formData);
+    await registerUser(user.jwt, formData);
     navigation.navigate('Home' as never);
   };
 
@@ -42,14 +42,14 @@ export default function RegisterScreen() {
         name="email"
         placeholder="Correo electrónico"
         control={control}
-        secureTextEntry={undefined}
+        secureTextEntry={false}
       />
 
       <CustomInput
         name="name"
         placeholder="Nombre"
         control={control}
-        secureTextEntry={undefined}
+        secureTextEntry={false}
       />
 
       <CustomInput
@@ -59,7 +59,7 @@ export default function RegisterScreen() {
         secureTextEntry={true}
       />
       
-      <StyledButton onPress={handleSubmit(onSubmit)}>INICIAR</StyledButton>
+      <StyledButton onPress={handleSubmit(onSubmit)}>REGISTRAR</StyledButton>
     </View>
   </>
   );

@@ -2,22 +2,44 @@
 import { BACKEND_URL } from '@env';
 
 export const registerUser = async (jwt: string, formData: FormData): Promise<boolean> =>{
-
+  
+  console.log(jwt);
+   
+  let response = await fetch("https://www.uuidtools.com/api/generate/v4", { 
+    method: "GET",
+  });
+  
+  const uuid = (await response.text()).slice(2, -2);
+   
+  const headers = {
+    Authorization: `Bearer ${jwt}`,
+    "Content-Type": "application/json"
+  };
+  
+  let bodyContent = JSON.stringify({
+    "email": formData.getAll('email')[0],
+    "name": formData.getAll('name')[0], 
+    "password": formData.getAll('password')[0],
+    "id": uuid
+  });
+  
   try {
-    const headers = {
-      Authorization: `Bearer ${jwt}`,
-      "Content-Type": "application/json"
-    };
 
-    const uploadResponse = await fetch(`${BACKEND_URL}/register`, {
+    const response = await fetch(`${BACKEND_URL}/user/register`, {
       method: "POST",
-      body: formData,
-      headers: headers,
+      body: bodyContent,
+      headers: headers
     });
 
-    if (uploadResponse.ok) return true;
-    console.error("Error:", uploadResponse.statusText);
-    return false;
+    if (response.status === 401) {
+      console.error('Error 401: No autorizado');
+      return false;
+    } else if (response.ok) {
+      return true;
+    } else {
+      console.error('Error en la solicitud: ' + response.status);
+      return false;
+    }
   } catch (error) {
     console.error("Error:", error);
     return false;
