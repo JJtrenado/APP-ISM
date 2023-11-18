@@ -12,7 +12,7 @@ export const registerUser = async (jwt: string, formData: FormData): Promise<boo
   const uuid = (await response.text()).slice(2, -2);
    
   const headers = {
-    Authorization: `Bearer ${jwt}`,
+    Authorization: jwt,
     "Content-Type": "application/json"
   };
   

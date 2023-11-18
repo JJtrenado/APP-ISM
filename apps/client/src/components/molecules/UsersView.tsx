@@ -20,7 +20,6 @@ const UsersView = ({ jwt }) => {
   const [selectedGarment, setSelectedGarment] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-
   const loadUsers = async () => {
     try {
       setUsers(await getUsers(jwt));
@@ -63,9 +62,7 @@ const UsersView = ({ jwt }) => {
             <StyledButton color='red' onPress={async () => {
               await deleteUserById(jwt, item.id);
               loadUsers();
-            }}>
-              Eliminar
-            </StyledButton>
+            }}>Eliminar</StyledButton>
           </View>
         )}
         keyExtractor={(item) => item.id}

@@ -36,7 +36,7 @@ const HomeScreen = () => {
     <>
       <Header picture={user.picture} />
       <OptionsButtons />
-      <UsersView jwt={user.jwt.jwt}/>
+      <UsersView jwt={user.jwt}/>
     </>
   );
 }

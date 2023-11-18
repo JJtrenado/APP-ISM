@@ -5,7 +5,7 @@ import { json } from 'express';
 
 export const getUsers = async (jwt: string): Promise<User[]> =>{
   let headersList = {
-    Authorization: `Bearer ${jwt}`,
+    Authorization: jwt,
     "Content-Type": "application/json"
   };
   

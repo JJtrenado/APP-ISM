@@ -2,7 +2,7 @@ import { BACKEND_URL } from '@env';
 
 export const deleteUserById = async (jwt: string, id: string): Promise<boolean> => {
   let headersList = {
-    Authorization: `Bearer ${jwt}`,
+    Authorization: jwt,
     "Content-Type": "application/json"
   };
   
