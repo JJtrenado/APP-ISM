@@ -1,11 +1,9 @@
-// @ts-ignore
-import { BACKEND_URL }from '@env';
 import { Garment } from '../Domain/garment';
 
 export const getGarmentByUser = async ( jwt: string, userId: string ) :Promise<Garment[]> => {
   try {
     const response = await fetch(
-      `${BACKEND_URL}/garments/byUser/${userId}`,
+      `http://192.168.1.29:3002/api/garments/byUser/${userId}`,
       {
       headers: { Authorization: `Bearer ${jwt}` },
       }

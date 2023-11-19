@@ -1,6 +1,3 @@
-// @ts-ignore
-import { BACKEND_URL } from '@env';
-
 export const registerUser = async (jwt: string, formData: FormData): Promise<boolean> =>{
   
   console.log(jwt);
@@ -25,7 +22,7 @@ export const registerUser = async (jwt: string, formData: FormData): Promise<boo
   
   try {
 
-    const response = await fetch(`${BACKEND_URL}/user/register`, {
+    const response = await fetch(`http://192.168.1.29:3002/api/user/register`, {
       method: "POST",
       body: bodyContent,
       headers: headers

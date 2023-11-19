@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
-import { useState } from "react";
 import Header from "../molecules/Header";
 import Profile from "../molecules/ProfileMenu";
 

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import React, { useEffect, useState } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function MyBarCodeScanner({ onScanSuccess }) {
   const [hasPermission, setHasPermission] = useState(null);

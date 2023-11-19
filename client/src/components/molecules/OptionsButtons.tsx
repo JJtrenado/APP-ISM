@@ -1,9 +1,6 @@
-import { View, StyleSheet } from 'react-native'
-import React from 'react'
-import BarCodeButton from '../atoms/BarCodeButton';
-import StyledImageButton from '../atoms/StyledImageButton';
-import OutfitButton from '../atoms/OutfitButton';
 import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import StyledButton from '../atoms/StyledButton';
 
 export default function OptionsButtons() {

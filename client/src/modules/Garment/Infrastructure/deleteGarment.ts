@@ -1,9 +1,7 @@
-import { BACKEND_URL } from '@env';
-
 export const deleteGarmentByBarCode = async (jwt: string, barCode: string): Promise<boolean> => {
   try {
     const response = await fetch(
-      `${BACKEND_URL}/garments/${barCode}`,
+      `http://192.168.1.29:3002/api/garments/${barCode}`,
       {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${jwt}` },

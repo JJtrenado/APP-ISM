@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
 import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
-import { useState } from "react";
 import Header from "../molecules/Header";
 import OptionsButtons from "../molecules/OptionsButtons";
-import GarmentListSimple from "../molecules/GarmentView";
 import UsersView from "../molecules/UsersView";
 
 

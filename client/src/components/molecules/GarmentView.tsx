@@ -1,15 +1,12 @@
-// @ts-ignore
-import { BACKEND_URL }from '@env';
-import React, { useState } from 'react';
-import { View, Text, ActivityIndicator, FlatList, Image, Modal, TouchableOpacity, Dimensions, Platform, Switch } from 'react-native';
-import { getGarmentByUser } from '../../modules/Garment/Infrastructure/getGarments';
-import { Garment } from '../../modules/Garment/Domain/garment';
-import { StyleSheet } from 'react-native';
-import StyledText from '../atoms/StyledText';
-import StyledButton from '../atoms/StyledButton';
-import { deleteGarmentByBarCode } from '../../modules/Garment/Infrastructure/deleteGarment';
-import { updateGarmentAvailabilityByBarCode } from '../../modules/Garment/Infrastructure/updateGarment';
 import { useFocusEffect } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { ActivityIndicator, Dimensions, FlatList, Image, Modal, Platform, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
+import { Garment } from '../../modules/Garment/Domain/garment';
+import { deleteGarmentByBarCode } from '../../modules/Garment/Infrastructure/deleteGarment';
+import { getGarmentByUser } from '../../modules/Garment/Infrastructure/getGarments';
+import { updateGarmentAvailabilityByBarCode } from '../../modules/Garment/Infrastructure/updateGarment';
+import StyledButton from '../atoms/StyledButton';
+import StyledText from '../atoms/StyledText';
 
 
 const GarmentListSimple = ({ jwt, userId }) => {
@@ -62,7 +59,7 @@ const GarmentListSimple = ({ jwt, userId }) => {
             setIsModalVisible(true);
           }}>
             <Image
-              source={{ uri: `${BACKEND_URL}/garments/${item.imagePath}` }}
+              source={{ uri: `http://192.168.1.29:3002/api/garments/${item.imagePath}` }}
               style={[styles.itemImage, { width: imageWidth }, item.available === false ? { borderColor: '#EA0C5F' } : null]}
             />
           </TouchableOpacity>
@@ -80,7 +77,7 @@ const GarmentListSimple = ({ jwt, userId }) => {
           {selectedGarment && (
             <View>
               <Image
-              source={{ uri: `${BACKEND_URL}/garments/${selectedGarment.imagePath}` }}
+              source={{ uri: `http://192.168.1.29:3002/api/garments/${selectedGarment.imagePath}` }}
               style={styles.detailImage}
               />
               <StyledText>Código: {selectedGarment.barCode}</StyledText>

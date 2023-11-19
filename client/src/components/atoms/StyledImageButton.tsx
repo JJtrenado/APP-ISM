@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 interface ImageButtonProps {
   onPress?: () => void;

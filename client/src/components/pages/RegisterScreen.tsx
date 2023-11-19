@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Image } from "react-native";
-import { getLocalUser, saveLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
-import StyledButton from '../atoms/StyledButton';
-import { useForm } from 'react-hook-form';
-import CustomInput from '../atoms/textInput';
 import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from "react";
+import { useForm } from 'react-hook-form';
+import { Image, StyleSheet, View } from "react-native";
+import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
+import StyledButton from '../atoms/StyledButton';
+import CustomInput from '../atoms/textInput';
 
-import Header from "../molecules/Header";
 import { registerUser } from "../../modules/Login/Infrastructure/registerUser";
+import Header from "../molecules/Header";
 
 export default function RegisterScreen() {
   const navigation = useNavigation();

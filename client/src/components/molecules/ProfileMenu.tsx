@@ -1,8 +1,8 @@
-import { Image, View, StyleSheet } from 'react-native'
-import React from 'react'
-import StyledText from '../atoms/StyledText';
-import StyledButton from '../atoms/StyledButton';
+import React from 'react';
+import { Image, StyleSheet, View } from 'react-native';
 import { logOut } from '../../modules/Login/Infrastructure/logOut';
+import StyledButton from '../atoms/StyledButton';
+import StyledText from '../atoms/StyledText';
 
 export default function Profile(user) {
   return (

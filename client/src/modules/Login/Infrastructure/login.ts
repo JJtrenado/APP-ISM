@@ -1,8 +1,4 @@
-// @ts-ignore
-import { BACKEND_URL }from '@env';
-import axios from 'axios';
 import { User } from '../../common/Domain/User';
-import { json } from 'express';
 
 export const login = async (formData: FormData): Promise<User> =>{
   let headersList = {
@@ -16,7 +12,7 @@ export const login = async (formData: FormData): Promise<User> =>{
   });
   
   try {
-    const response = await fetch(`${BACKEND_URL}/user/login`, {
+    const response = await fetch(`http://192.168.1.29:3002/api/user/login`, {
       method: "POST",
       body: bodyContent,
       headers: headersList

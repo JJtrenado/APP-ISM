@@ -1,6 +1,6 @@
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import { Entypo } from '@expo/vector-icons';
 import React from 'react';
-import { Entypo } from '@expo/vector-icons'; 
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import theme from '../theme';
 
 interface OutfitButtonProps {

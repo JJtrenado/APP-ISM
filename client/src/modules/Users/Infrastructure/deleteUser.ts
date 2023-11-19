@@ -1,5 +1,3 @@
-import { BACKEND_URL } from '@env';
-
 export const deleteUserById = async (jwt: string, id: string): Promise<boolean> => {
   let headersList = {
     Authorization: jwt,
@@ -7,7 +5,7 @@ export const deleteUserById = async (jwt: string, id: string): Promise<boolean> 
   };
   
   try {
-    const response = await fetch(`${BACKEND_URL}/user/${id}`, {
+    const response = await fetch(`http://192.168.1.29:3002/api/user/${id}`, {
       method: "DELETE",
       headers: headersList
     });

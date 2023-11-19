@@ -1,6 +1,6 @@
+import * as ImagePicker from 'expo-image-picker';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
 import StyledButton from '../atoms/StyledButton';
 
 export default function ImagePickerExample({ onPickerSuccess }) {

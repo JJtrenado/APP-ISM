@@ -1,12 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { ScrollView } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
-import Header from "../molecules/Header";
 import StyledText from "../atoms/StyledText";
 import MyBarCodeScanner from "../molecules/BarCodeScanner";
 import CameraComponent from "../molecules/CameraComponent";
-import ImagePickerExample from "../molecules/ImagePicker";
+import Header from "../molecules/Header";
 import NewBookForm from "../molecules/NewBookForm";
 
 const NewGarmentScreen = () => {

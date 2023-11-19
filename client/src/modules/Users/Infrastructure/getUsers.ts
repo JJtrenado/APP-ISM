@@ -1,7 +1,4 @@
-// @ts-ignore
-import { BACKEND_URL }from '@env';
 import { User } from '../../common/Domain/User';
-import { json } from 'express';
 
 export const getUsers = async (jwt: string): Promise<User[]> =>{
   let headersList = {
@@ -10,7 +7,7 @@ export const getUsers = async (jwt: string): Promise<User[]> =>{
   };
   
   try {
-    const response = await fetch(`${BACKEND_URL}/user`, {
+    const response = await fetch(`http://192.168.1.29:3002/api/user`, {
       method: "GET",
       headers: headersList
     });

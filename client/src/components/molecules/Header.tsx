@@ -1,6 +1,6 @@
-import { StyleSheet, Text, Image, TouchableOpacity, View } from 'react-native'
-import React from 'react'
 import { useNavigation } from "@react-navigation/native";
+import React from 'react';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import StyledImageButton from '../atoms/StyledImageButton';
 
 export default function Header(picture) {

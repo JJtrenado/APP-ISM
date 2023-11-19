@@ -1,6 +1,3 @@
-// @ts-ignore
-import { BACKEND_URL } from '@env';
-
 export const updateGarmentAvailabilityByBarCode = async (
   jwt: string,
   barCode: string,
@@ -9,7 +6,7 @@ export const updateGarmentAvailabilityByBarCode = async (
   available = !available;
   try {
     const response = await fetch(
-      `${BACKEND_URL}/garments/byBarcode/${barCode}/available`,
+      `http://192.168.1.29:3002/api/garments/byBarcode/${barCode}/available`,
       {
         method: 'PATCH',
         headers: {

@@ -1,6 +1,6 @@
-import React from 'react'
-import { StyleProp, TextStyle, Text, StyleSheet } from 'react-native'
-import theme from '../theme'
+import React from 'react';
+import { StyleProp, StyleSheet, Text, TextStyle } from 'react-native';
+import theme from '../theme';
 
 interface StyledTextProps {
   align?: string;

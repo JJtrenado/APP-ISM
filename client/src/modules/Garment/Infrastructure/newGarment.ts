@@ -1,6 +1,3 @@
-// @ts-ignore
-import { BACKEND_URL }from '@env';
-
 export const uploadData = async (jwt: string, formData: FormData): Promise<boolean> =>{
   try {
     const headers = {
@@ -9,7 +6,7 @@ export const uploadData = async (jwt: string, formData: FormData): Promise<boole
 
     let bodyContent = new FormData();
     bodyContent= formData;
-    const uploadResponse = await fetch(`${BACKEND_URL}/book`, {
+    const uploadResponse = await fetch(`http://192.168.1.29:3002/api/book`, {
       method: "POST",
       body: bodyContent,
       headers: headers,

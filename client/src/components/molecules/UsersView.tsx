@@ -1,17 +1,11 @@
-// @ts-ignore
-import { BACKEND_URL }from '@env';
-import React, { useState } from 'react';
-import { View, Text, ActivityIndicator, FlatList, Image, Modal, TouchableOpacity, Dimensions, Platform, Switch } from 'react-native';
-import { getGarmentByUser } from '../../modules/Garment/Infrastructure/getGarments';
-import { getUsers } from '../../modules/Users/Infrastructure/getUsers';
-import { StyleSheet } from 'react-native';
-import StyledText from '../atoms/StyledText';
-import StyledButton from '../atoms/StyledButton';
-import { deleteGarmentByBarCode } from '../../modules/Garment/Infrastructure/deleteGarment';
-import { updateGarmentAvailabilityByBarCode } from '../../modules/Garment/Infrastructure/updateGarment';
 import { useFocusEffect } from '@react-navigation/native';
-import { User } from '../../modules/common/Domain/User';
+import React, { useState } from 'react';
+import { ActivityIndicator, Dimensions, FlatList, StyleSheet, Text, View } from 'react-native';
 import { deleteUserById } from '../../modules/Users/Infrastructure/deleteUser';
+import { getUsers } from '../../modules/Users/Infrastructure/getUsers';
+import { User } from '../../modules/common/Domain/User';
+import StyledButton from '../atoms/StyledButton';
+import StyledText from '../atoms/StyledText';
 
 
 const UsersView = ({ jwt }) => {

@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
+import * as React from 'react';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import theme from '../theme';
 
 export default function StyledImageTextButton({

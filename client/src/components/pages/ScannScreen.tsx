@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
-import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet } from "react-native";
 import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
-import { useState } from "react";
-import Header from "../molecules/Header";
 import StyledText from "../atoms/StyledText";
 import MyBarCodeScanner from "../molecules/BarCodeScanner";
+import Header from "../molecules/Header";
 
 
 const HomeScreen = () => {

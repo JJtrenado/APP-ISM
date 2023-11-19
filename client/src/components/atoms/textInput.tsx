@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, TextInput, StyleSheet} from 'react-native';
-import {Controller} from 'react-hook-form';
+import { Controller } from 'react-hook-form';
+import { StyleSheet, TextInput, View } from 'react-native';
 import StyledText from './StyledText';
 
 const CustomInput = ({

@@ -1,14 +1,12 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
 import { useForm } from 'react-hook-form';
-import StyledButton from '../atoms/StyledButton';
-import CustomInput from '../atoms/textInput';
-import SwitchInput from '../atoms/switchInput';
+import { StyleSheet, View } from 'react-native';
 import { uploadData } from '../../modules/Garment/Infrastructure/newGarment';
 import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
-import ButtonPickerInput from '../atoms/buttonPickerInput';
-import { useNavigation } from '@react-navigation/native';
+import StyledButton from '../atoms/StyledButton';
 import ListPickerInput from '../atoms/listPickerInput';
+import CustomInput from '../atoms/textInput';
 
 const NewBookForm = ({ barCode, formDataPhotoUri }) => {
   const navigation = useNavigation();

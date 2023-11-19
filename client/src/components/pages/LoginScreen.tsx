@@ -1,11 +1,11 @@
+import { useNavigation } from '@react-navigation/native';
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { useForm } from 'react-hook-form';
+import { Image, StyleSheet, View } from "react-native";
+import { login } from '../../modules/Login/Infrastructure/login';
 import { saveLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
 import StyledButton from '../atoms/StyledButton';
-import { useForm } from 'react-hook-form';
 import CustomInput from '../atoms/textInput';
-import { useNavigation } from '@react-navigation/native';
-import { login } from '../../modules/Login/Infrastructure/login';
 
 export default function LoginScreen() {
     const navigation = useNavigation();

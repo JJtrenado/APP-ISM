@@ -1,14 +1,10 @@
-// @ts-ignore
-import { BACKEND_URL }from '@env';
 import React, { useEffect, useState } from 'react';
-import { View, ScrollView, Image, Text, StyleSheet, TouchableOpacity, Dimensions, Animated, ImageSourcePropType } from 'react-native';
-import { useForm } from 'react-hook-form';
-import StyledButton from '../atoms/StyledButton';
-import PickerInput from '../atoms/listPickerInput';
-import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
-import { getGarmentByUser, getGarmentsByType } from '../../modules/Garment/Infrastructure/getGarments';
+import { Dimensions, Image, Text, View } from 'react-native';
 import { Garment } from '../../modules/Garment/Domain/garment';
+import { getGarmentByUser, getGarmentsByType } from '../../modules/Garment/Infrastructure/getGarments';
 import { newOutfit } from '../../modules/Outfit/Infrastructure/newOutfit';
+import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
+import StyledButton from '../atoms/StyledButton';
 
 const { width } = Dimensions.get('window');
 
@@ -32,7 +28,7 @@ const NewOutfitForm = ({ jwt, userId }) => {
   // Función para crear el estado y las fotos para un tipo de prenda
   function createGarmentStateAndPhotos(type) {
     const garments = getGarmentsByType(garmentsData, type);
-    const photos = garments.map((item) => `${BACKEND_URL}/garments/${item.imagePath}`);
+    const photos = garments.map((item) => `http://192.168.1.29:3002/api/garments/${item.imagePath}`);
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleAnterior = () => {

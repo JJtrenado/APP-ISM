@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Controller } from 'react-hook-form';
 import { Picker } from '@react-native-picker/picker';
+import React from 'react';
+import { Controller } from 'react-hook-form';
+import { StyleSheet, View } from 'react-native';
 import StyledText from './StyledText';
 
 const PickerInput = ({

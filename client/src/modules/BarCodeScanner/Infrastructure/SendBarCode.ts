@@ -1,5 +1,3 @@
-// @ts-ignore
-import { BACKEND_URL }from '@env';
 import axios from "axios";
 
 export async function SendBarCode(jwt: string, barCode: string): Promise<string> {
@@ -7,7 +5,7 @@ export async function SendBarCode(jwt: string, barCode: string): Promise<string>
     const headers = {
       Authorization: `Bearer ${jwt}`,
     };
-    const response = await axios.post(`${BACKEND_URL}/users/profile`, barCode, { headers });
+    const response = await axios.post(`http://192.168.1.29:3002/api/users/profile`, barCode, { headers });
     return response.data;
   } catch (error) {
     console.error("Error validating user from Google:", error);

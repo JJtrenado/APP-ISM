@@ -1,6 +1,3 @@
-// @ts-ignore
-import { BACKEND_URL } from '@env';
-
 export const newOutfit = async (jwt: string, bodyContent: string): Promise<boolean> => {
 
   try {
@@ -9,7 +6,7 @@ export const newOutfit = async (jwt: string, bodyContent: string): Promise<boole
       "Content-Type": "application/json"
     };
 
-    const uploadResponse = await fetch(`${BACKEND_URL}/outfits`, {
+    const uploadResponse = await fetch(`http://192.168.1.29:3002/api/outfits`, {
       method: "POST",
       body: bodyContent,
       headers: headers,
