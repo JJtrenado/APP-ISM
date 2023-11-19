@@ -1,7 +1,7 @@
-export const deleteGarmentByBarCode = async (jwt: string, barCode: string): Promise<boolean> => {
+export const deleteBook = async (jwt: string, id: string): Promise<boolean> => {
   try {
     const response = await fetch(
-      `http://192.168.1.29:3002/api/garments/${barCode}`,
+      `http://192.168.1.29:3000/api/book/${id}`,
       {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${jwt}` },

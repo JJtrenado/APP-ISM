@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { StyleSheet, View } from 'react-native';
-import { uploadData } from '../../modules/Garment/Infrastructure/newGarment';
+import { createBook } from '../../modules/Book/Infrastructure/newBook';
 import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
 import StyledButton from '../atoms/StyledButton';
 import ListPickerInput from '../atoms/listPickerInput';
@@ -36,7 +36,7 @@ const NewBookForm = ({ barCode, formDataPhotoUri }) => {
     });
     formDataPhotoUri.append("user" , user.email);
     formDataPhotoUri.append("barCode", barCode);
-    uploadData(user.jwt.jwt, formDataPhotoUri);
+    createBook(user.jwt.jwt, formDataPhotoUri);
     navigation.navigate('Home' as never);
   };
 

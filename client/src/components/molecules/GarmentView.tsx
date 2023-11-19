@@ -1,39 +1,41 @@
 import { useFocusEffect } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { ActivityIndicator, Dimensions, FlatList, Image, Modal, Platform, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
-import { Garment } from '../../modules/Garment/Domain/garment';
-import { deleteGarmentByBarCode } from '../../modules/Garment/Infrastructure/deleteGarment';
-import { getGarmentByUser } from '../../modules/Garment/Infrastructure/getGarments';
-import { updateGarmentAvailabilityByBarCode } from '../../modules/Garment/Infrastructure/updateGarment';
+import { Book } from '../../modules/Book/Domain/book';
+// import { deleteGarmentByBarCode } from '../../modules/Garment/Infrastructure/deleteGarment';
+import { getAllBooks } from '../../modules/Book/Infrastructure/getBooks';
+import { updateGarmentAvailabilityByBarCode } from '../../modules/Book/Infrastructure/updateGarment';
 import StyledButton from '../atoms/StyledButton';
 import StyledText from '../atoms/StyledText';
+import { deleteBook } from '../../modules/Book/Infrastructure/deleteBook';
 
 
-const GarmentListSimple = ({ jwt, userId }) => {
-  const [garmentsData, setGarmentsData] = useState<Garment[]>([]);
+const GarmentListSimple = ({ jwt }) => {
+  const [booksData, setbooksData] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedGarment, setSelectedGarment] = useState(null);
+  const [selectedBook, setselectedBook] = useState<Book>(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
 
-  const loadGarments = async () => {
+  const loadbooks = async () => {
     try {
-      const garments = await getGarmentByUser(jwt, userId);
-      setGarmentsData(garments);
-      setLoading(false);
+      const books = await getAllBooks(jwt);
+      setbooksData(books);
+      setTimeout(() => setLoading(false));
+      
     } catch (error) {
-      console.error('Error fetching garments:', error);
+      console.error('Error fetching books:', error);
       setLoading(false);
     }
   };
 
   useFocusEffect(
     React.useCallback(() => {
-      loadGarments();
+      loadbooks();
     }, [])
   );
   
-  console.log('garmentsData', garmentsData);
+  console.log('booksData', booksData);
 
   if (loading) {
     return (
@@ -48,19 +50,21 @@ const GarmentListSimple = ({ jwt, userId }) => {
   const imageWidth = windowWidth / 3;
 
   return (
-    <View>
+    <View style={styles.container}>
+      <StyledText style={styles.title} fontWeight='bold' fontSize='title'>Libros</StyledText>
       <FlatList
-        data={garmentsData}
+        data={booksData}
         numColumns={3}
         contentContainerStyle={styles.flatListContent}
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => {
-            setSelectedGarment(item);
+            setselectedBook(item);
             setIsModalVisible(true);
           }}>
             <Image
-              source={{ uri: `http://192.168.1.29:3002/api/garments/${item.imagePath}` }}
-              style={[styles.itemImage, { width: imageWidth }, item.available === false ? { borderColor: '#EA0C5F' } : null]}
+              source={{ uri: `http://192.168.1.29:3000/${item.image}` }}
+              style={[styles.itemImage, { width: imageWidth }]}
+
             />
           </TouchableOpacity>
         )}
@@ -74,33 +78,24 @@ const GarmentListSimple = ({ jwt, userId }) => {
         onRequestClose={() => setIsModalVisible(false)}
       >
         <View style={[styles.modalContainer, Platform.OS === 'android' ? styles.androidShadow : styles.iosShadow]}>
-          {selectedGarment && (
+          {selectedBook && (
             <View>
               <Image
-              source={{ uri: `http://192.168.1.29:3002/api/garments/${selectedGarment.imagePath}` }}
+              source={{ uri: `http://192.168.1.29:3000/${selectedBook.image}` }}
               style={styles.detailImage}
               />
-              <StyledText>Código: {selectedGarment.barCode}</StyledText>
-              <StyledText>Parte del cuerpo: {selectedGarment.type}</StyledText>
-              <StyledText>Marca: {selectedGarment.brand}</StyledText>
-              <StyledText>Modelo: {selectedGarment.model}</StyledText>
-              <StyledText>Descripción: {selectedGarment.description}</StyledText>
+              <StyledText>Código: {selectedBook.barCode}</StyledText>
+              <StyledText>Autor: {selectedBook.author}</StyledText>
+              <StyledText>Stock: {selectedBook.stock}</StyledText>
+              <StyledText>Género: {selectedBook.genre}</StyledText>
               <View style={styles.buttonsContainer}>
               <StyledButton color='red' onPress={async () => {
-                await deleteGarmentByBarCode(jwt, selectedGarment.barCode);
+                await deleteBook(jwt, selectedBook.id);
                 setIsModalVisible(false);
-                loadGarments();
+                loadbooks();
               }}>
                 Eliminar
               </StyledButton>
-              <View>
-                <StyledText fontWeight='bold'>Estado:</StyledText>
-                <Switch value={selectedGarment.available} onValueChange={async () => {
-                  setIsModalVisible(false);
-                  await updateGarmentAvailabilityByBarCode(jwt, selectedGarment.barCode, selectedGarment.available);
-                  loadGarments();
-                }}/>
-              </View>
               <StyledButton onPress={() => setIsModalVisible(false)} >Cerrar</StyledButton>
               </View>
            </View>
@@ -112,11 +107,13 @@ const GarmentListSimple = ({ jwt, userId }) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 20,
+  },
   itemImage: {
     aspectRatio: 1,
     resizeMode: 'cover',
     borderColor: 'white',
-    borderWidth: 5,
   },
   modalContainer: {
     marginTop: '30%',
@@ -154,6 +151,9 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     marginBottom: 5,
     borderRadius: 5,
+  },
+  title: {
+    marginVertical: 10,
   },
 });
 

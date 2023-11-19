@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Dimensions, Image, Text, View } from 'react-native';
-import { Garment } from '../../modules/Garment/Domain/garment';
-import { getGarmentByUser, getGarmentsByType } from '../../modules/Garment/Infrastructure/getGarments';
+import { Book } from '../../modules/Book/Domain/book';
+import { getAllBooks, getGarmentsByType } from '../../modules/Book/Infrastructure/getBooks';
 import { newOutfit } from '../../modules/Outfit/Infrastructure/newOutfit';
 import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
 import StyledButton from '../atoms/StyledButton';
@@ -12,13 +12,13 @@ const { width } = Dimensions.get('window');
 
 const NewOutfitForm = ({ jwt, userId }) => {
   const [user, setUser] = useState(null);
-  const [garmentsData, setGarmentsData] = useState<Garment[]>([]);
+  const [garmentsData, setGarmentsData] = useState<Book[]>([]);
 
   useEffect(() => {
     const fetchUser = async () => {
       const localUser = await getLocalUser();
       setUser(localUser);
-      const garments = await getGarmentByUser(jwt, userId);
+      const garments = await getAllBooks(jwt, userId);
       setGarmentsData(garments);
     };
 
@@ -28,7 +28,7 @@ const NewOutfitForm = ({ jwt, userId }) => {
   // Función para crear el estado y las fotos para un tipo de prenda
   function createGarmentStateAndPhotos(type) {
     const garments = getGarmentsByType(garmentsData, type);
-    const photos = garments.map((item) => `http://192.168.1.29:3002/api/garments/${item.imagePath}`);
+    const photos = garments.map((item) => `http://192.168.1.29:3002/api/garments/${item.image}`);
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleAnterior = () => {

@@ -4,6 +4,7 @@ import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUs
 import Header from "../molecules/Header";
 import OptionsButtons from "../molecules/OptionsButtons";
 import UsersView from "../molecules/UsersView";
+import GarmentView from "../molecules/GarmentView";
 
 
 const HomeScreen = () => {
@@ -35,6 +36,7 @@ const HomeScreen = () => {
       <Header picture={user.picture} />
       <OptionsButtons />
       <UsersView jwt={user.jwt}/>
+      <GarmentView jwt={user.jwt}/>
     </>
   );
 }
