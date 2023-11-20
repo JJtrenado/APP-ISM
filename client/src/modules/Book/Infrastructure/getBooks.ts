@@ -16,6 +16,27 @@ export const getAllBooks = async ( jwt: string ) :Promise<Book[]> => {
   }
 };
 
+export const getBookByBarcode = async ( jwt: string,  barCode: string,): Promise<Book> =>{
+  try {
+    const headers = {
+      Authorization: `Bearer ${jwt}`,
+    };
+    const uploadResponse = await fetch(`http://192.168.1.29:3000/api/book/${barCode}`, {
+      method: "GET",
+      headers: headers,
+    });
+
+    console.log(uploadResponse);
+
+    if (uploadResponse.ok) return uploadResponse.json();
+    console.error("Error:", uploadResponse.statusText);
+    return null;
+  } catch (error) {
+    console.error("Error:", error);
+    return null;
+  }
+};
+
 // export const getGarmentsByType = ( garments: Book[], type:string ) :Book[] => {
 //   return garments.filter(garments => garments.type === type);
 // };

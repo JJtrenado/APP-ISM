@@ -91,13 +91,13 @@ const NewBookScreen = () => {
       ) : formDataPhotoUri == null ? (
         <>
           <StyledText align='center' fontSize="title" fontWeight='bold' style={{marginTop: 20, paddingBottom:30}}>Haz una foto al libro</StyledText>
-          <CameraComponent onImgSuccess={handlePhotoTaken} />
+          <CameraComponent onImgSuccess={handlePhotoTaken} barCode={barCode} />
           {/* <ImagePickerExample onPickerSuccess={handlePhotoTaken}/> */}
         </>
       ) : (
         <ScrollView>
           <StyledText align="center" fontSize="title" fontWeight="bold" style={{marginTop: 20, paddingBottom:30}}>Nuevo Libro</StyledText>
-          <NewBookForm barCode={barCode} formDataPhotoUri={formDataPhotoUri} />
+          <NewBookForm barCode={barCode}/>
         </ScrollView>
       )}
     </>

@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import StyledImageTextButton from '../atoms/StyledImageTextButton';
 
-export default function CameraComponent({ onImgSuccess }) {
+export default function CameraComponent({ onImgSuccess, barCode }) {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
@@ -36,9 +36,10 @@ export default function CameraComponent({ onImgSuccess }) {
         const asset = await MediaLibrary.createAssetAsync(image);
         const uri: string = asset.uri;
         let bodyContent = new FormData();
+        console.log(barCode);
         bodyContent.append("file", {
           uri,
-          name: `image.jpg`,
+          name: `${barCode}.jpeg`,
           type: 'image/jpeg',
         });
         onImgSuccess(bodyContent);

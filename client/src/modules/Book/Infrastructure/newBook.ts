@@ -63,16 +63,21 @@ export const uploadImageBook = async (jwt: string, image: FormData): Promise<boo
 };
 
 export const createBook = async (jwt: string, formData: FormData): Promise<boolean> =>{
+  let response = await fetch("https://www.uuidtools.com/api/generate/v4", { 
+    method: "GET",
+  });
+  
+  const uuid = (await response.text()).slice(2, -2);
+
   try {
     const headers = {
       Authorization: `Bearer ${jwt}`,
     };
 
-    let bodyContent = new FormData();
-    bodyContent= formData;
-    const uploadResponse = await fetch(`http://192.168.1.29:3000/api/book`, {
+    formData.append("id", uuid);
+    const uploadResponse = await fetch(`http://192.168.1.29:3000/api/book/create`, {
       method: "POST",
-      body: bodyContent,
+      body: formData,
       headers: headers,
     });
 

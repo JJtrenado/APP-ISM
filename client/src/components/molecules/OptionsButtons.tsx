@@ -1,25 +1,25 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import StyledButton from '../atoms/StyledButton';
+import BarCodeButton from '../atoms/BarCodeButton';
+import BookButton from '../atoms/BookButton';
+import WorkersButton from '../atoms/WorkersButton';
 
 export default function OptionsButtons() {
   const navigation = useNavigation();
 
   return (
     <View style={[styles.buttons]}>
-      <StyledButton onPress={() => {navigation.navigate('Register' as never);}}>Registrar Trabajador</StyledButton>
-      <StyledButton onPress={() => {navigation.navigate('NewBook' as never);}}>Añadir libro</StyledButton>
-      <StyledButton onPress={() => {navigation.navigate('Scann' as never);}}>Escanear BarCode</StyledButton>
-      {/* <BarCodeButton onPress={() => {navigation.navigate('Scann' as never);}} size={40}/>
-      <StyledImageButton onPress={() => { navigation.navigate('NewGarment' as never); }} imageSource={require("../../../assets/tshirtIcon.png")} size={45}/>
-      <OutfitButton onPress={() => {navigation.navigate('NewOutfit' as never);}} size={40}/> */}
+      <WorkersButton onPress={() => {navigation.navigate('Workers' as never);}} size={40}/>
+      <BookButton onPress={() => {navigation.navigate('Books' as never);}} size={40}/>
+      <BarCodeButton onPress={() => {navigation.navigate('Scann' as never);}} size={40}/>
     </View>
   )
 }
 
 const styles = StyleSheet.create({  
   buttons: {
+    paddingTop: 20,
     justifyContent: "space-around",
     flexDirection: "row",
     marginVertical: 20,

@@ -8,7 +8,7 @@ import StyledButton from '../atoms/StyledButton';
 import ListPickerInput from '../atoms/listPickerInput';
 import CustomInput from '../atoms/textInput';
 
-const NewBookForm = ({ barCode, formDataPhotoUri }) => {
+const NewBookForm = ({ barCode }) => {
   const navigation = useNavigation();
   
   const { control, handleSubmit, formState: { errors } } = useForm();
@@ -31,12 +31,14 @@ const NewBookForm = ({ barCode, formDataPhotoUri }) => {
   }
 
   const onSubmit = data => {
+    let bodyContent = new FormData();
+    bodyContent.append("image", `${barCode}.jpeg`);
     Object.keys(data).map((key: string) => {
-      formDataPhotoUri.append(key, data[key]);
+      bodyContent.append(key, data[key]);
     });
-    formDataPhotoUri.append("user" , user.email);
-    formDataPhotoUri.append("barCode", barCode);
-    createBook(user.jwt.jwt, formDataPhotoUri);
+    bodyContent.append("user" , user.email);
+    bodyContent.append("barCode", barCode);
+    createBook(user.jwt.jwt, bodyContent);
     navigation.navigate('Home' as never);
   };
 
@@ -46,7 +48,7 @@ const NewBookForm = ({ barCode, formDataPhotoUri }) => {
       <ListPickerInput
         rules = {{ required: true }}
         secureTextEntry={undefined}
-        labels = {['Ciencia Ficción', 'Terror', 'Romántico', 'Biogŕafico', 'Histórico', 'Fantasía', 'Infantil', 'Juvenil', 'Autoayuda', 'Cocina', 'Viajes', 'Otros']}
+        labels = {['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Thriller', 'Western',]}
         name="genre"
         placeholder="Género"
         control={control}

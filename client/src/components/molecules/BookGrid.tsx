@@ -1,16 +1,14 @@
 import { useFocusEffect } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { ActivityIndicator, Dimensions, FlatList, Image, Modal, Platform, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Dimensions, FlatList, Image, Modal, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Book } from '../../modules/Book/Domain/book';
-// import { deleteGarmentByBarCode } from '../../modules/Garment/Infrastructure/deleteGarment';
+import { deleteBook, deleteOneBook } from '../../modules/Book/Infrastructure/deleteBook';
 import { getAllBooks } from '../../modules/Book/Infrastructure/getBooks';
-import { updateGarmentAvailabilityByBarCode } from '../../modules/Book/Infrastructure/updateGarment';
 import StyledButton from '../atoms/StyledButton';
 import StyledText from '../atoms/StyledText';
-import { deleteBook } from '../../modules/Book/Infrastructure/deleteBook';
 
 
-const GarmentListSimple = ({ jwt }) => {
+const BookGrid = ({ jwt }) => {
   const [booksData, setbooksData] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedBook, setselectedBook] = useState<Book>(null);
@@ -35,8 +33,6 @@ const GarmentListSimple = ({ jwt }) => {
     }, [])
   );
   
-  console.log('booksData', booksData);
-
   if (loading) {
     return (
       <View>
@@ -50,8 +46,7 @@ const GarmentListSimple = ({ jwt }) => {
   const imageWidth = windowWidth / 3;
 
   return (
-    <View style={styles.container}>
-      <StyledText style={styles.title} fontWeight='bold' fontSize='title'>Libros</StyledText>
+    <View>
       <FlatList
         data={booksData}
         numColumns={3}
@@ -94,9 +89,19 @@ const GarmentListSimple = ({ jwt }) => {
                 setIsModalVisible(false);
                 loadbooks();
               }}>
-                Eliminar
+                Eliminar Todos
               </StyledButton>
-              <StyledButton onPress={() => setIsModalVisible(false)} >Cerrar</StyledButton>
+              <StyledButton color='blue' onPress={async () => {
+                setIsModalVisible(false);
+                deleteOneBook(jwt, selectedBook.barCode);
+                console.log(selectedBook.barCode);
+                loadbooks();
+              }}>
+                Eliminar Uno
+              </StyledButton>
+              <StyledButton onPress={() => {
+                setIsModalVisible(false)
+              }} >Cerrar</StyledButton>
               </View>
            </View>
           )}
@@ -107,13 +112,11 @@ const GarmentListSimple = ({ jwt }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 20,
-  },
   itemImage: {
     aspectRatio: 1,
     resizeMode: 'cover',
     borderColor: 'white',
+    borderWidth: 5,
   },
   modalContainer: {
     marginTop: '30%',
@@ -154,8 +157,9 @@ const styles = StyleSheet.create({
   },
   title: {
     marginVertical: 10,
+    paddingHorizontal: 20,
   },
 });
 
-export default GarmentListSimple;
+export default BookGrid;
 
