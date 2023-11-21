@@ -12,7 +12,7 @@ export const getAllBooks = async ( jwt: string ) :Promise<Book[]> => {
     const jsonData = await response.json();
     return jsonData;
   } catch (error) {
-    console.error('Error fetching garments:', error);
+    console.error('Error fetching books:', error);
   }
 };
 
@@ -36,7 +36,3 @@ export const getBookByBarcode = async ( jwt: string,  barCode: string,): Promise
     return null;
   }
 };
-
-// export const getGarmentsByType = ( garments: Book[], type:string ) :Book[] => {
-//   return garments.filter(garments => garments.type === type);
-// };

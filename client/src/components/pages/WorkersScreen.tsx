@@ -1,15 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from "react";
-import { useForm } from 'react-hook-form';
-import { Image, ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
 import StyledButton from '../atoms/StyledButton';
-import CustomInput from '../atoms/textInput';
 
-import { registerUser } from "../../modules/Login/Infrastructure/registerUser";
+import StyledText from '../atoms/StyledText';
 import Header from "../molecules/Header";
 import UsersView from '../molecules/UsersView';
-import StyledText from '../atoms/StyledText';
 
 export default function RegisterScreen() {
   const navigation = useNavigation();
@@ -39,7 +36,7 @@ return (
   <>
   <Header picture={user.picture} />
   <ScrollView>
-    <StyledText align="center" fontWeight="bold" fontSize='title' style={{ marginTop: 20 }}>Libros</StyledText>
+    <StyledText align="center" fontWeight="bold" fontSize='title' style={{ margin: 20 }}>Usuarios</StyledText>
     <UsersView jwt={user.jwt}/>
   </ScrollView>
   <StyledButton style={styles.floatingButton} onPress={() => {navigation.navigate('Register' as never);}}>+</StyledButton>

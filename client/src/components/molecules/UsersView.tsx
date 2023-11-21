@@ -11,8 +11,6 @@ import StyledText from '../atoms/StyledText';
 const UsersView = ({ jwt }) => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedGarment, setSelectedGarment] = useState(null);
-  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const loadUsers = async () => {
     try {
@@ -44,7 +42,6 @@ const UsersView = ({ jwt }) => {
 
   return (
     <View style={styles.container}>
-      <StyledText style={styles.title} fontWeight='bold' fontSize='title'>Usuarios</StyledText>
       <FlatList
         data={users}
         numColumns={1}

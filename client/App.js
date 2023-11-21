@@ -9,7 +9,6 @@ import LoginScreen from "./src/components/pages/LoginScreen";
 import SettingsScreen from "./src/components/pages/SettingsScreen";
 import ScannScreen from "./src/components/pages/ScannScreen";
 import NewBookScreen from "./src/components/pages/NewBookScreen";
-import NewOutfitScreen from './src/components/pages/NewOutfitScreen';
 import RegisterScreen from './src/components/pages/RegisterScreen';
 import WorkersScreen from './src/components/pages/WorkersScreen';
 import BooksScreen from './src/components/pages/BooksScreen';
@@ -29,7 +28,6 @@ export default function App() {
         <Stack.Screen name="Workers" component={WorkersScreen} />
         <Stack.Screen name="NewBook" component={NewBookScreen} />
         <Stack.Screen name="Books" component={BooksScreen} />
-        <Stack.Screen name="NewOutfit" component={NewOutfitScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

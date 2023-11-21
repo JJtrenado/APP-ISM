@@ -2,11 +2,11 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from "react";
 import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
 
+import { ScrollView, StyleSheet } from "react-native";
+import StyledButton from '../atoms/StyledButton';
+import StyledText from '../atoms/StyledText';
 import BookGrid from '../molecules/BookGrid';
 import Header from "../molecules/Header";
-import { ScrollView, StyleSheet } from "react-native";
-import StyledText from '../atoms/StyledText';
-import StyledButton from '../atoms/StyledButton';
 
 export default function RegisterScreen() {
   const navigation = useNavigation();
@@ -36,7 +36,7 @@ export default function RegisterScreen() {
     <>
     <Header picture={user.picture} />
     <ScrollView>
-      <StyledText align="center" fontWeight="bold" fontSize='title' style={{ marginTop: 20 }}>Libros</StyledText>
+      <StyledText align="center" fontWeight="bold" fontSize='title' style={{ margin: 20 }}>Libros</StyledText>
       <BookGrid jwt={user.jwt}/>
     </ScrollView>
     <StyledButton style={styles.floatingButton} onPress={() => {navigation.navigate('NewBook' as never);}}>+</StyledButton>

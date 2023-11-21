@@ -12,7 +12,7 @@ export const deleteBook = async (jwt: string, id: string): Promise<boolean> => {
     return false;
 
   } catch (error) {
-    console.error('Error deleting garment:', error);
+    console.error('Error deleting book:', error);
     return false;
   }
 };
@@ -32,7 +32,7 @@ export const deleteOneBook = async (jwt: string, barCode: string): Promise<boole
     return false;
 
   } catch (error) {
-    console.error('Error deleting garment:', error);
+    console.error('Error deleting book:', error);
     return false;
   }
 };

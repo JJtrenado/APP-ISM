@@ -1,14 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Modal, Platform, StyleSheet, View, Image } from "react-native";
+import { Image, Modal, Platform, StyleSheet, View } from "react-native";
+import { Book } from "../../modules/Book/Domain/book";
+import { deleteBook } from "../../modules/Book/Infrastructure/deleteBook";
+import { getBookByBarcode } from "../../modules/Book/Infrastructure/getBooks";
 import { getLocalUser } from '../../modules/common/Infrastructure/LocalStorageUser';
+import StyledButton from "../atoms/StyledButton";
 import StyledText from "../atoms/StyledText";
 import MyBarCodeScanner from "../molecules/BarCodeScanner";
 import Header from "../molecules/Header";
-import { Book } from "../../modules/Book/Domain/book";
-import { getBookByBarcode } from "../../modules/Book/Infrastructure/getBooks";
-import StyledButton from "../atoms/StyledButton";
-import { deleteBook } from "../../modules/Book/Infrastructure/deleteBook";
 
 
 const ScannScreen = () => {
@@ -51,7 +51,7 @@ const ScannScreen = () => {
 
     {barCode == null ? (
       <>
-        <StyledText align='center' fontWeight='bold' style={{marginTop: 20}}>Escanea el código de la prenda</StyledText>
+        <StyledText align='center' fontWeight='bold' style={{marginTop: 20}}>Escanea el código del libro</StyledText>
       <MyBarCodeScanner onScanSuccess={handleScanSuccess} />
       </>
     ) : (

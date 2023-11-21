@@ -7,6 +7,7 @@ import { saveLocalUser } from '../../modules/common/Infrastructure/LocalStorageU
 import StyledButton from '../atoms/StyledButton';
 import CustomInput from '../atoms/textInput';
 
+
 export default function LoginScreen() {
     const navigation = useNavigation();
     const { control, handleSubmit, formState: { errors } } = useForm();

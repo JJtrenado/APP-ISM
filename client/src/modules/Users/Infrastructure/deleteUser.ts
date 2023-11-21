@@ -19,7 +19,7 @@ export const deleteUserById = async (jwt: string, id: string): Promise<boolean> 
     }
 
   } catch (error) {
-    console.error('Error deleting garment:', error);
+    console.error('Error deleting user:', error);
     return false;
   }
 };
