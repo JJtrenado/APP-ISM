@@ -65,6 +65,7 @@ const HomeScreen = () => {
     <>
       <Header picture={user.picture} />
       <OptionsButtons />
+      <StyledText align="center" fontWeight="bold" fontSize='title' style={{ marginTop: 20 }}>Estadísticas</StyledText>
       <View style={styles.container}>
         <Image style={styles.image} source={photos[currentIndex]} />
       </View>
@@ -73,7 +74,7 @@ const HomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, paddingTop: 40, alignItems: 'center' },
+  container: { flex: 1, paddingTop: 20, alignItems: 'center' },
   image: { width: '80%', height: '80%', borderRadius: 5 },
 });
 

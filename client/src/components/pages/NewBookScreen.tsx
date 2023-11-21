@@ -43,8 +43,8 @@ const NewBookScreen = () => {
 
   const handlePhotoTaken = async (formDataPhotoUri) => {
     setFormDataPhotoUri(formDataPhotoUri);
-    const hola = await uploadImageBook(user.jwt.jwt, formDataPhotoUri);
-    console.log(hola)
+    await uploadImageBook(user.jwt.jwt, formDataPhotoUri);
+    await uploadImageBook(user.jwt.jwt, formDataPhotoUri);
   };
 
   if (isLoading) {
