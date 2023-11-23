@@ -25,9 +25,6 @@ const HomeScreen = () => {
         const imageArray = [
           require('../../../assets/dashboard1.png'),
           require('../../../assets/dashboard2.png'),
-          require('../../../assets/dashboard3.png'),
-          require('../../../assets/dashboard4.png'),
-          // Agrega otras imágenes según sea necesario
         ];
         setPhotos(imageArray);
       };
@@ -65,7 +62,10 @@ const HomeScreen = () => {
     <>
       <Header picture={user.picture} />
       <OptionsButtons />
-      <StyledText align="center" fontWeight="bold" fontSize='title' style={{ marginTop: 20 }}>Estadísticas</StyledText>
+      <View style={styles.titleContainer}>
+      <StyledText align="center" fontWeight="bold" fontSize='title'>Estadísticas</StyledText>
+      <Image style={styles.grafanaLogo} source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Grafana_icon.svg/985px-Grafana_icon.svg.png',}} />
+      </View>
       <View style={styles.container}>
         <Image style={styles.image} source={photos[currentIndex]} />
       </View>
@@ -75,7 +75,9 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, paddingTop: 20, alignItems: 'center' },
-  image: { width: '80%', height: '80%', borderRadius: 5 },
+  titleContainer: { paddingTop: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' },
+  image: { width: '85%', height: '95%', borderRadius: 5 },
+  grafanaLogo: { marginLeft: 5, width: 20, height: 20}
 });
 
 export default HomeScreen;
