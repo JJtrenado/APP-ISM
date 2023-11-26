@@ -73,7 +73,7 @@ const NewBookScreen = () => {
             onRequestClose={() => setIsModalVisible(false)}
           >
             <View style={[styles.modalContainer, Platform.OS === 'android' ? styles.androidShadow : styles.iosShadow]}>
-              <StyledText>Quiere añadir un stock de este libro?</StyledText>
+              <StyledText>¿Quiere añadir un stock de este libro?</StyledText>
               <View style={styles.buttonsContainer}>
                 <StyledButton color='red' onPress={async () => {
                   navigation.navigate('Home' as never);
