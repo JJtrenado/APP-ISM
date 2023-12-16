@@ -32,7 +32,7 @@ const NewBookForm = ({ barCode }) => {
 
   const onSubmit = data => {
     let bodyContent = new FormData();
-    bodyContent.append("image", `${barCode}.jpeg`);
+    bodyContent.append("image", `${barCode}.jpg`);
     Object.keys(data).map((key: string) => {
       bodyContent.append(key, data[key]);
     });
