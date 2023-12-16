@@ -39,8 +39,8 @@ export default function CameraComponent({ onImgSuccess, barCode }) {
         console.log(barCode);
         bodyContent.append("file", {
           uri,
-          name: `${barCode}.jpeg`,
-          type: 'image/jpeg',
+          name: `${barCode}.jpg`,
+          type: 'image/jpg',
         });
         onImgSuccess(bodyContent);
 
